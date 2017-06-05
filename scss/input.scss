@@ -1,0 +1,40 @@
+@mixin border-box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+
+  @include border-box;
+}
+$breakpoint-mobile: 400px;
+@media (min-width: $breakpoint-mobile) {
+  .top-bar {
+    padding: 10px;
+    margin: 10px;
+  }
+  .mint {
+    border: 2px dotted lime;
+    height: 120px;
+    width: 120px;
+  }
+  .teal {
+    border: 2px dotted lime;
+    height: 120px;
+    width: 120px;
+  }
+  .gold {
+    border: 2px dotted lime;
+    height: 120px;
+    width: 120px;
+  }
+  .tomato {
+    border: 2px dotted lime;
+    height: 120px;
+    width: 120px;
+  }
+}
