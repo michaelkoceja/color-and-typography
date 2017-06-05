@@ -1,3 +1,10 @@
+$border-width: 2px;
+$box-height: 15vh;
+$mint: #d8f5e8;
+$teal: #2accc3;
+$gold: #ffbc17;
+$tomato: #ff623f;
+
 @mixin border-box {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -11,30 +18,63 @@
 
   @include border-box;
 }
-$breakpoint-mobile: 400px;
-@media (min-width: $breakpoint-mobile) {
+$breakpoint-mobile: 450px;
+@media (max-width: $breakpoint-mobile) {
   .top-bar {
     padding: 10px;
     margin: 10px;
   }
   .mint {
-    border: 2px dotted lime;
-    height: 120px;
-    width: 120px;
+    border: $border-width dotted red;
+    height: $box-height;
+    background-color: $mint;
   }
   .teal {
-    border: 2px dotted lime;
-    height: 120px;
-    width: 120px;
+    @extend .mint;
+    background-color: $teal;
   }
   .gold {
-    border: 2px dotted lime;
-    height: 120px;
-    width: 120px;
+    @extend .mint;
+    background-color: $gold;
   }
   .tomato {
-    border: 2px dotted lime;
-    height: 120px;
-    width: 120px;
+    @extend .mint;
+    background-color: $tomato;
+  }
+  ul {
+    list-style: none;
+    font-weight: bold;
+  }
+  .list-right {
+    text-align: right;
+    font-weight: normal;
+  }
+}
+$breakpoint-tablet: 720px;
+@media (min-width: $breakpoint-tablet) {
+  .mint2 {
+    border: $border-width dotted red;
+    height: $box-height;
+    background-color: $mint;
+  }
+  .teal {
+    @extend .mint2;
+    background: $teal;
+  }
+  .gold {
+    @extend .mint2;
+    background-color: $gold;
+  }
+  .tomato {
+    @extend .mint2;
+    background-color: $tomato;
+  }
+  ul {
+    list-style: none;
+    font-weight: bold;
+  }
+  .list-right {
+    text-align: right;
+    font-weight: normal;
   }
 }
