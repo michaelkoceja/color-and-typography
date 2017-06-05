@@ -1,15 +1,22 @@
 $border-width: 2px;
 $box-height: 15vh;
-$mint: #d8f5e8;
-$teal: #2accc3;
-$gold: #ffbc17;
-$tomato: #ff623f;
+
+// grid variables
+$grid-columns: 12;
+$grid-max-width: 100%;
+
+
+// breakpoints
+$breakpoint-mobile: "only screen and (max-width: 420px)";
+$breakpoint-tablet: "only screen and (max-width: 720px)";
+$breakpoint-desktop: "only screen and (max-width: 1200px)";
 
 @mixin border-box {
-    -webkit-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;
+      box-sizing: border-box;
 }
+
 *,
 *:after,
 *:before {
@@ -18,8 +25,42 @@ $tomato: #ff623f;
 
   @include border-box;
 }
-$breakpoint-mobile: 450px;
-@media (max-width: $breakpoint-mobile) {
+
+%clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.container, .row {
+  @extend %clearfix;
+}
+
+[class*='column-'] {
+    float: left;
+    padding: 1em;
+    width: 100%;
+    min-height: 1px;
+  }
+  $mint: #d8f5e8;
+  $teal: #2accc3;
+  $gold: #ffbc17;
+  $tomato: #ff623f;
+
+
+
+
+/* Review Media Quieries Article(Different in Sass) */
+
+
+  // Media Quieries
+@media #{$breakpoint-mobile} {
   .top-bar {
     padding: 10px;
     margin: 10px;
@@ -41,17 +82,14 @@ $breakpoint-mobile: 450px;
     @extend .mint;
     background-color: $tomato;
   }
-  ul {
-    list-style: none;
-    font-weight: bold;
-  }
-  .list-right {
-    text-align: right;
-    font-weight: normal;
+  @for $i from 1 through $grid-columns {
+
+    .column-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
   }
 }
-$breakpoint-tablet: 720px;
-@media (min-width: $breakpoint-tablet) {
+@media #{$breakpoint-tablet} {
   .mint2 {
     border: $border-width dotted red;
     height: $box-height;
@@ -69,12 +107,35 @@ $breakpoint-tablet: 720px;
     @extend .mint2;
     background-color: $tomato;
   }
-  ul {
-    list-style: none;
-    font-weight: bold;
+  @for $i from 1 through $grid-columns {
+
+    .column-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
   }
-  .list-right {
-    text-align: right;
-    font-weight: normal;
+}
+@media #{$breakpoint-desktop} {
+  .mint3 {
+    border: $border-width dotted red;
+    height: $box-height;
+    background-color: $mint;
+  }
+  .teal {
+    @extend .mint3;
+    background: $teal;
+  }
+  .gold {
+    @extend .mint3;
+    background-color: $gold;
+  }
+  .tomato {
+    @extend .mint3;
+    background-color: $tomato;
+  }
+  @for $i from 1 through $grid-columns {
+
+    .column-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
   }
 }
